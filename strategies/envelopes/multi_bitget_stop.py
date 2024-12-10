@@ -54,7 +54,7 @@ async def check_and_close_all_positions_if_needed(positions, exchange, margin_mo
                 type="market",
                 reduce=True,
                 margin_mode=margin_mode,
-                hedge_mode=hedge_mode,
+                #hedge_mode=hedge_mode,
                 error=False,
             )
             for position in positions
@@ -69,7 +69,7 @@ async def main():
     account = ACCOUNTS["bitget1"]
 
     margin_mode = "isolated"  # isolated or crossed
-    leverage = 3
+    leverage = 8
     hedge_mode = True  # Warning, set to False if you are in one way mode
 
     tf = "1h"
@@ -329,7 +329,7 @@ params = {
         positions = await exchange.get_open_positions(list(params.keys()))
 
         # VÉRIFICATION DU ROI GLOBAL
-        if await check_and_close_all_positions_if_needed(positions, exchange, margin_mode, hedge_mode):
+        if await check_and_close_all_positions_if_needed(positions, exchange, margin_mode):
             await exchange.close()
             return
 
