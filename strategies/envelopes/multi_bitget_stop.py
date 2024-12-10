@@ -52,7 +52,7 @@ async def main():
     tf = "1h"
     sl = 0.3
 
-    pairs_params = {
+    params = {
     "BTC/USDT": {
         "src": "close",
         "ma_base_window": 500,  # long_ma_window
