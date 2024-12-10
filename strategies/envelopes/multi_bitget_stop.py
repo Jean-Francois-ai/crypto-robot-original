@@ -46,167 +46,291 @@ async def main():
     account = ACCOUNTS["bitget1"]
 
     margin_mode = "isolated"  # isolated or crossed
-    leverage = 3
+    leverage = 8
     hedge_mode = True # Warning, set to False if you are in one way mode
 
     tf = "1h"
     sl = 0.3
-    params = {
-        "BTC/USDT": {
-            "src": "close",
-            "ma_base_window": 7,
-            "envelopes": [0.07, 0.1, 0.15],
-            "size": 0.1,
-            "sides": ["long", "short"],
-        },
-        "ETH/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15],
-            "size": 0.1,
-            "sides": ["long", "short"],
-        },
-        "ADA/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.09, 0.12, 0.15],
-            "size": 0.1,
-            "sides": ["long", "short"],
-        },
-        "AVAX/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.09, 0.12, 0.15],
-            "size": 0.1,
-            "sides": ["long", "short"],
-        },
-        "EGLD/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "KSM/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "OCEAN/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "REN/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "ACH/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "APE/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "CRV/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "DOGE/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "ENJ/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "FET/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "ICP/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "IMX/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "LDO/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "MAGIC/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "REEF/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "SAND/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "TRX/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
-        "XTZ/USDT": {
-            "src": "close",
-            "ma_base_window": 5,
-            "envelopes": [0.07, 0.1, 0.15, 0.2],
-            "size": 0.05,
-            "sides": ["long", "short"],
-        },
+
+    pairs_params = {
+    "BTC/USDT": {
+        "src": "close",
+        "ma_base_window": 500,  # long_ma_window
+        "envelopes": [0.07, 0.1, 0.15],  # exemple d'envelopes standard
+        "size": 0.05,  # wallet_exposure
+        "sides": ["long", "short"]
+    },
+    "AAVE/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "APE/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "APT/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "AVAX/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "AXS/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "C98/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "CRV/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "DOGE/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "DOT/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "DYDX/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "ETH/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "FIL/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "FTM/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "BNB/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "GALA/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "GMT/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "GRT/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "KNC/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "KSM/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "LRC/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "MANA/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "MASK/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "NEAR/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "ONE/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "OP/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "SAND/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "SHIB/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "SOL/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "STG/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "WOO/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "EGLD/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "ETC/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "JASMY/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "ROSE/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "XRP/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "EOS/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "BCH/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
+    },
+    "LTC/USDT": {
+        "src": "close",
+        "ma_base_window": 500,
+        "envelopes": [0.07, 0.1, 0.15],
+        "size": 0.05,
+        "sides": ["long", "short"]
     }
+}
+
+
+    
+        
 
     exchange = PerpBitget(
         public_api=account["public_api"],
