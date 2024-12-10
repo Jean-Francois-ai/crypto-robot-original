@@ -22,7 +22,7 @@ async def main():
     tf = "1h"
     sl = 0.3
     params = {
-        params = {
+       
         "BTC/USDT": {
             "src": "close",
             "ma_base_window": 7,
@@ -248,8 +248,7 @@ async def main():
             "sides": ["long", "short"],
         },
     }
-    }
-
+    
     exchange = PerpBitget(
         public_api=account["public_api"],
         secret_api=account["secret_api"],
